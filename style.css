@@ -1,8 +1,46 @@
-body {
+input#darkmode {
+    float: right;
+    visibility: hidden;
+}
+
+#darkmode:checked + main {
+    --color-main: #e7e8eb;
+    --bg-main: #2d2d2d;
+    --bg-switch: rgba(0, 246, 252, 0.15);
+    --content-switch-after: " Light Mode ☀️";
+    --bg-yellow: #030c43;
+    --bg-green: #42033c;
+    --bg-red: #074949;
+}
+
+#switch {
+    cursor: pointer;
+    user-select: none;
+    background: var(--bg-switch, rgba(27, 31, 35, 0.05));
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+
+#switch::after {
+    content: var(--content-switch-after, " Dark Mode 🌙");
+}
+
+main {
+    height: 100%;
+    padding: 1.5rem clamp(1rem, 5%, 3rem);
+    color: var(--color-main, #24292e);
+    background-color: var(--bg-main, #fff);
     font-family: "Comic Sans MS", serif;
-    background-color: lightgray ;
-    color: #0f121e;
-    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+
+html,
+body {
+    padding: 0;
+    margin: 0;
 }
 
 a {
@@ -45,9 +83,6 @@ a:hover {
     margin: 0;
     font-style: italic;
     text-decoration: none;
-    /*text-transform: capitalize;*/
-    /*letter-spacing: 5px;*/
-    /*word-spacing: 5px;*/
 }
 
 .container {
@@ -56,18 +91,17 @@ a:hover {
     padding-top: 30px;
 }
 
-
 .bg-yellow {
-    background: #fff9dc;
+    background: var(--bg-yellow, #fff9dc);
 }
 
 .bg-green {
-    background: #e5ffe7;
+    background: var(--bg-green, #e5ffe7);
 }
 
 
 .bg-red {
-    background: #ffe5e5;
+    background: var(--bg-red, #ffe5e5);
 }
 
 .card {
